@@ -1,6 +1,0 @@
-interface:
-  display_name: "Auditer et améliorer un agent"
-  short_description: "Diagnostiquer, sécuriser et remettre aux normes"
-  default_prompt: "Utilise $auditer-agent pour expliquer comment améliorer cet agent."
-policy:
-  allow_implicit_invocation: true

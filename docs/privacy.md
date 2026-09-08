@@ -1,9 +1,9 @@
-# Confidentialité
+# Privacy
 
-Le plugin fonctionne localement et ne fournit aucun serveur, connecteur ou compte auquel son éditeur aurait accès. Nicolas Cléton ne devient ni membre, ni administrateur, ni collaborateur de l'espace de travail qui installe le plugin.
+Agent Creator runs locally and provides no server, connector, or account accessible to its maintainer. Nicolas Cléton does not become a member, administrator, or collaborator of a workspace that installs the plugin.
 
-Le plugin peut utiliser Git et GitHub CLI sur la machine de l'utilisateur pour sauvegarder les agents que celui-ci lui demande de créer. L'authentification reste dans le trousseau de la machine et les dépôts appartiennent au compte ou à l'organisation choisis par l'utilisateur.
+The plugin may use Git and GitHub CLI on the user's machine to save agents the user asks it to create. Authentication remains in the machine's credential store, and repositories belong to the user-selected account or organization.
 
-Les données utilisateur, client et entreprise sont destinées à un espace privé local placé hors du dépôt. Des contrôles locaux bloquent les chemins privés, les fichiers de données et plusieurs familles de secrets ou d'identifiants avant un commit ou un envoi.
+User, customer, and company data belongs in protected local storage outside the repository. Local controls block private paths, data files, and common classes of secrets or identifiers before commit or push.
 
-Aucun détecteur automatique ne remplace le contrôle d'accès à la machine et au compte GitHub. Une personne qui contourne volontairement les protections avec ses propres outils reste responsable de ses actions.
+Automated detection does not replace access control for the machine or GitHub account. Anyone who deliberately bypasses these controls with separate tools remains responsible for that action.

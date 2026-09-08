@@ -1,20 +1,54 @@
-.DS_Store
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.tmp/
-tmp/
+# BEGIN AGENTCREATOR PROTECTED
+# Private runtime and identity
+.agent-private
+.agent-private/
+.agent-local/
+.secrets/
+
+# Credentials and local configuration
 .env
 .env.*
 !.env.example
-.secrets/
-private/
-data/
-clients/
-exports/
-logs/
 *.pem
 *.key
 *.p12
 *.pfx
-*.sqlite*
+*credentials*
+*secret*
+*token*
+
+# User and company data
+private/
+prive/
+data/
+donnees/
+clients/
+customers/
+factures/
+invoices/
+documents/
+uploads/
+exports/
+logs/
+backups/
+memory/
+memoire/
+*.sqlite
+*.sqlite3
+*.db
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.csv
+*.tsv
+
+# Local noise
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+# END AGENTCREATOR PROTECTED
