@@ -33,7 +33,7 @@ Codex exige que l'utilisateur examine et approuve une première fois les hooks n
 Installation locale depuis le dépôt public :
 
 ```bash
-codex plugin marketplace add nicolascleton/createur-agents --ref main
+codex plugin marketplace add ncleton/agentcreator --ref main
 codex plugin add createur-agents@createur-agents
 ```
 

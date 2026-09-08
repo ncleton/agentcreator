@@ -6,7 +6,7 @@ Plugin Codex de Nicolas Cléton pour créer, auditer et sécuriser des agents pa
 
 L'administrateur du client ouvre **Administration > Plugins > Ajouter > Importer une marketplace**, puis indique :
 
-- Source : `https://github.com/nicolascleton/createur-agents`
+- Source : `https://github.com/ncleton/agentcreator`
 - Chemin : vide
 - Branche : `main` ou vide pour suivre la branche par défaut
 
@@ -15,7 +15,7 @@ Il installe ensuite **Créateur d'agents** pour les rôles souhaités. Nicolas C
 ## Installer dans Codex local
 
 ```bash
-codex plugin marketplace add nicolascleton/createur-agents --ref main
+codex plugin marketplace add ncleton/agentcreator --ref main
 codex plugin add createur-agents@createur-agents
 ```
 
