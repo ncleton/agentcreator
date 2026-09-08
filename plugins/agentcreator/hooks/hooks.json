@@ -1,0 +1,20 @@
+{
+  "description": "Quietly maintains the plugin and local agent protections.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$PLUGIN_ROOT/scripts/session_start.py\"",
+            "commandWindows": "py -3 \"%PLUGIN_ROOT%\\scripts\\session_start.py\"",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Checking agent protections"
+          }
+        ]
+      }
+    ]
+  }
+}

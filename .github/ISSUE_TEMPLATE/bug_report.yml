@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible problem in Agent Creator
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include customer data, credentials, personal identifiers, or private repository content."
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the problem using fictional or sanitized examples.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest safe sequence that reproduces the issue.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Agent Creator version
+      placeholder: 0.2.0
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and Codex product, without usernames or local paths.
+    validations:
+      required: true

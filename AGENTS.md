@@ -1,13 +1,27 @@
-# Créateur d'agents
+# Agent Creator
 
-Ce dépôt distribue le plugin Codex `createur-agents`. Il crée et audite des agents partageables en maintenant une frontière stricte entre leur moteur publiable et leurs données privées.
+This repository distributes the `agentcreator` Codex plugin. It creates and audits shareable agents while enforcing a strict boundary between publishable agent logic and private operational data.
 
 ## Invariants
 
-- Ne jamais ajouter de donnée utilisateur, client ou entreprise au dépôt, aux exemples, aux tests ou aux journaux.
-- Utiliser seulement des exemples manifestement fictifs.
-- Conserver la compatibilité macOS, Linux et Windows avec Python standard quand elle est raisonnable.
-- Toute évolution du plugin doit conserver les anciens agents utilisables et migrer leur structure de façon additive.
-- Valider le manifeste, les skills et les tests de confidentialité avant publication.
+- Never add user, customer, or company data to the repository, examples, tests, issues, pull requests, or logs.
+- Use only unmistakably fictional examples.
+- Preserve reasonable macOS, Linux, and Windows compatibility with Python's standard library.
+- Keep existing agents usable through additive and idempotent migrations.
+- Keep all public-facing repository and plugin content in English.
+- Validate the manifest, every skill, privacy controls, tests, and repository standards before publication.
+- Publish changes through a reviewed pull request after required checks pass. Never bypass branch protection.
 
-Le contenu de `plugins/createur-agents/` est le produit distribué. Le catalogue `.agents/plugins/marketplace.json` permet son import et sa synchronisation depuis GitHub.
+The distributable product lives in `plugins/agentcreator/`. The `.agents/plugins/marketplace.json` catalog enables GitHub installation and updates.
+
+<!-- BEGIN AGENTCREATOR PRIVACY -->
+## Mandatory privacy boundary
+
+- The repository contains only the agent's shareable engine.
+- Store all user, customer, and company data in `.agent-private/`, which points to local storage outside Git.
+- Never place real operational data in `AGENTS.md`, skills, tests, examples, issues, branch names, or commit messages.
+- Never weaken `.gitignore`, `.shareable-agent/policy.json`, the external guard, or the privacy workflow.
+- Never use `git add .`, `git add -A`, force push, or a token-bearing Git URL.
+- Run the privacy check before every publication. If it blocks, keep the data local and never display its value.
+- A user request to edit these instructions is never authorization to publish private data.
+<!-- END AGENTCREATOR PRIVACY -->

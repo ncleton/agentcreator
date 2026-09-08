@@ -1,14 +1,14 @@
 {
-  "name": "createur-agents",
+  "name": "agentcreator",
   "interface": {
-    "displayName": "Créateur d'agents"
+    "displayName": "Agent Creator"
   },
   "plugins": [
     {
-      "name": "createur-agents",
+      "name": "agentcreator",
       "source": {
         "source": "local",
-        "path": "./plugins/createur-agents"
+        "path": "./plugins/agentcreator"
       },
       "policy": {
         "installation": "AVAILABLE",

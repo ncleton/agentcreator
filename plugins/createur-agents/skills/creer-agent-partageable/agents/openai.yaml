@@ -1,6 +1,0 @@
-interface:
-  display_name: "Créer un agent partageable"
-  short_description: "Créer un agent sûr à partir de quelques mots"
-  default_prompt: "Utilise $creer-agent-partageable pour créer un agent dans ce dossier."
-policy:
-  allow_implicit_invocation: true

@@ -1,46 +1,57 @@
-# Créateur d'agents
+# Agent Creator
 
-Plugin Codex de Nicolas Cléton pour créer, auditer et sécuriser des agents partageables à partir d'une demande formulée naturellement.
+[![CI](https://github.com/ncleton/agentcreator/actions/workflows/validate.yml/badge.svg)](https://github.com/ncleton/agentcreator/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Installer dans un espace ChatGPT
+Agent Creator is a Codex plugin that creates, audits, secures, and publishes personal or collaborative agents from plain-language requests. Shareable agent logic stays in Git; user and company data stays in protected local storage outside the repository.
 
-L'administrateur du client ouvre **Administration > Plugins > Ajouter > Importer une marketplace**, puis indique :
+## What it provides
 
-- Source : `https://github.com/ncleton/agentcreator`
-- Chemin : vide
-- Branche : `main` ou vide pour suivre la branche par défaut
+- `create-shareable-agent`: creates a personal or collaborative agent in the current folder.
+- `audit-agent`: audits, repairs, secures, or converts an existing agent.
+- `create-github-project`: creates or upgrades an exemplary GitHub repository with privacy, governance, CI, and security controls.
+- External Git guards that block private files, credentials, and personal data before commit or push.
+- Daily plugin update checks for local Codex installations.
 
-Il installe ensuite **Créateur d'agents** pour les rôles souhaités. Nicolas Cléton ne rejoint pas l'espace du client et n'accède à aucune de ses données. La marketplace vérifie automatiquement les mises à jour chaque jour.
+## Install in a ChatGPT workspace
 
-## Installer dans Codex local
+In **Administration > Plugins > Add > Import marketplace**, use:
+
+- Source: `https://github.com/ncleton/agentcreator`
+- Path: leave empty
+- Revision: `main`, or leave empty to follow the default branch
+
+Install **Agent Creator** for the desired roles. The maintainer does not join the customer workspace and cannot access customer data. The marketplace checks for updates automatically.
+
+## Install in Codex
 
 ```bash
 codex plugin marketplace add ncleton/agentcreator --ref main
-codex plugin add createur-agents@createur-agents
+codex plugin add agentcreator@agentcreator
 ```
 
-Démarrer ensuite une nouvelle tâche Codex afin de charger les skills.
+Start a new Codex task after installation so the skills are loaded. Codex may ask for one-time approval of the maintenance hook.
 
-Lors du premier démarrage, Codex peut demander d'examiner et d'approuver le hook de maintenance fourni par le plugin. Cette validation unique permet la recherche quotidienne de mises à jour locales. Si le hook n'est pas approuvé, le plugin reste utilisable mais l'actualisation locale doit être demandée manuellement.
+## Use
 
-## Utiliser
+Ask naturally from the folder that should contain the agent or repository:
 
-Dans le dossier qui doit recevoir l'agent, demander simplement :
+> Create an agent that manages my invoices.
 
-> Crée-moi un agent pour gérer mes factures.
+> Audit this agent and make it safe to share.
 
-Dans un agent existant :
+> Publish this folder as an exemplary GitHub project.
 
-> Comment puis-je améliorer cet agent ?
+Personal mode is the default. Collaborative mode is selected when the request mentions a team, multiple contributors, roles, review, or contribution history. GitHub repositories are private by default unless the user explicitly requests public visibility.
 
-Ou, pour appliquer les corrections :
+## Security and privacy
 
-> Mets cet agent aux normes pour le partager.
+Real operational data lives outside Git in local private storage. Agent Creator combines a protected `.gitignore`, a publishable-path allowlist, content scanning, external Git hooks, and CI checks. See [Security](SECURITY.md) and [Privacy](docs/privacy.md).
 
-Le mode personnel est choisi par défaut. Le mode collaboratif est activé lorsque la demande mentionne une équipe, plusieurs contributeurs ou un circuit de validation.
+## Project documentation
 
-## Protection des données
-
-Les données réelles restent dans un espace privé local hors Git. Le plugin installe aussi un `.gitignore`, une liste blanche de chemins publiables, un scanner de contenu, des hooks Git externes et un contrôle CI. Voir la [politique de confidentialité](docs/privacy.md).
-
-La documentation de maintenance se trouve dans [distribution et mises à jour](docs/distribution.md).
+- [Contributing](CONTRIBUTING.md)
+- [Governance](GOVERNANCE.md)
+- [Support](SUPPORT.md)
+- [Changelog](CHANGELOG.md)
+- [Distribution and updates](docs/distribution.md)

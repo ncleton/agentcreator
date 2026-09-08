@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 REPOSITORY = Path(__file__).resolve().parents[1]
-SCRIPT = REPOSITORY / "plugins" / "createur-agents" / "scripts" / "agentctl.py"
+SCRIPT = REPOSITORY / "plugins" / "agentcreator" / "scripts" / "agentctl.py"
 
 
 class AgentCtlTests(unittest.TestCase):
@@ -19,7 +19,7 @@ class AgentCtlTests(unittest.TestCase):
         self.base = Path(self.temp.name)
         self.root = self.base / "agent-test"
         self.runtime = self.base / "runtime"
-        self.env = dict(os.environ, CREATEUR_AGENTS_HOME=str(self.runtime))
+        self.env = dict(os.environ, AGENTCREATOR_HOME=str(self.runtime))
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -51,7 +51,7 @@ class AgentCtlTests(unittest.TestCase):
             "--root",
             str(self.root),
             "--description",
-            "Classer des factures et préparer leur suivi.",
+            "Organize invoices and prepare their tracking.",
             "--json",
         )
         payload = json.loads(result.stdout)
@@ -103,7 +103,7 @@ class AgentCtlTests(unittest.TestCase):
         self.create_agent()
         self.commit_initial_agent()
         with (self.root / "AGENTS.md").open("a", encoding="utf-8") as handle:
-            handle.write("\nContact interne: personne@example.fr\n")
+            handle.write("\nInternal contact: " + "person" + "@" + "fictional.invalid\n")
         self.git("add", "AGENTS.md")
         result = self.call("guard", "--root", str(self.root), "--staged", "--json", ok=False)
         self.assertEqual(result.returncode, 2)
@@ -112,15 +112,32 @@ class AgentCtlTests(unittest.TestCase):
 
     def test_repair_is_additive_and_idempotent(self) -> None:
         self.root.mkdir()
-        original = "# Agent existant\n\nRègle métier conservée.\n"
+        original = "# Existing agent\n\nPreserved business rule.\n"
         (self.root / "AGENTS.md").write_text(original, encoding="utf-8")
         self.call("repair", "--root", str(self.root), "--mode", "collaborative")
         self.call("repair", "--root", str(self.root), "--mode", "collaborative")
         updated = (self.root / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn(original.strip(), updated)
-        self.assertEqual(updated.count("BEGIN CREATEUR-AGENTS PRIVACY"), 1)
+        self.assertEqual(updated.count("BEGIN AGENTCREATOR PRIVACY"), 1)
         policy = json.loads((self.root / ".shareable-agent" / "policy.json").read_text(encoding="utf-8"))
         self.assertEqual(policy["mode"], "collaborative")
+
+    def test_repair_migrates_legacy_markers(self) -> None:
+        self.root.mkdir()
+        (self.root / ".gitignore").write_text(
+            "# BEGIN CREATEUR-AGENTS PROTECTED\nlegacy/\n# END CREATEUR-AGENTS PROTECTED\n",
+            encoding="utf-8",
+        )
+        (self.root / "AGENTS.md").write_text(
+            "# Agent\n\n<!-- BEGIN CREATEUR-AGENTS PRIVACY -->\nLegacy block.\n<!-- END CREATEUR-AGENTS PRIVACY -->\n",
+            encoding="utf-8",
+        )
+        self.call("repair", "--root", str(self.root))
+        ignore = (self.root / ".gitignore").read_text(encoding="utf-8")
+        agents = (self.root / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertNotIn("CREATEUR-AGENTS", ignore + agents)
+        self.assertEqual(ignore.count("BEGIN AGENTCREATOR PROTECTED"), 1)
+        self.assertEqual(agents.count("BEGIN AGENTCREATOR PRIVACY"), 1)
 
     def test_external_hook_blocks_commit(self) -> None:
         self.create_agent()
@@ -136,14 +153,14 @@ class AgentCtlTests(unittest.TestCase):
             check=False,
         )
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("Publication bloquée", result.stdout + result.stderr)
+        self.assertIn("Publication blocked", result.stdout + result.stderr)
 
     def test_history_scan_finds_previous_private_file(self) -> None:
         self.create_agent()
         self.commit_initial_agent()
         private_file = self.root / "clients" / "archive.csv"
         private_file.parent.mkdir()
-        private_file.write_text("nom,email\nExemple,personne@example.fr\n", encoding="utf-8")
+        private_file.write_text("name,email\nExample," + "person" + "@" + "fictional.invalid\n", encoding="utf-8")
         self.git("add", "-f", "clients/archive.csv")
         subprocess.run(
             ["git", "commit", "--no-verify", "-m", "Unsafe historical commit"],
