@@ -1,6 +1,6 @@
 {
   "name": "agentcreator",
-  "version": "0.2.1+codex.20260908164708",
+  "version": "0.3.0+codex.20260908173444",
   "description": "Creates, audits, secures, and publishes shareable Codex agents without exposing private operational data.",
   "author": {
     "name": "Nicolas Cl\u00e9ton",
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Agent Creator",
     "shortDescription": "Create and harden shareable agents.",
-    "longDescription": "Creates or upgrades personal and collaborative agents with private data kept outside Git and protected GitHub publication.",
+    "longDescription": "Creates or upgrades private project agents, and routes cross-project capabilities to governed plugins while keeping operational data outside Git.",
     "developerName": "Nicolas Cl\u00e9ton",
     "category": "Productivity",
     "capabilities": [
@@ -28,6 +28,7 @@
     "privacyPolicyURL": "https://github.com/ncleton/agentcreator/blob/main/docs/privacy.md",
     "defaultPrompt": [
       "Create an agent in this folder.",
+      "Create an agent that I can share with colleagues.",
       "How can I improve this agent?",
       "Publish this folder as an exemplary GitHub project."
     ]

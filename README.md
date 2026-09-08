@@ -7,11 +7,12 @@ Agent Creator is a Codex plugin that creates, audits, secures, and publishes per
 
 ## What it provides
 
-- `create-shareable-agent`: creates a personal or collaborative agent in the current folder.
+- `create-shareable-agent`: creates a project-scoped agent or routes a cross-project capability to a private installable plugin.
 - `audit-agent`: audits, repairs, secures, or converts an existing agent.
 - `create-github-project`: creates or upgrades an exemplary GitHub repository with privacy, governance, CI, and security controls.
 - External Git guards that block private files, credentials, and personal data before commit or push.
 - Daily plugin update checks for local Codex installations.
+- Automatic stable-channel updates by default for every shared plugin it creates, with an explicit manual-update option.
 
 ## Install in a ChatGPT workspace
 
@@ -42,7 +43,7 @@ Ask naturally from the folder that should contain the agent or repository:
 
 > Publish this folder as an exemplary GitHub project.
 
-Personal mode is the default. Collaborative mode is selected when the request mentions a team, multiple contributors, roles, review, or contribution history. GitHub repositories are private by default unless the user explicitly requests public visibility.
+Project scope is the default. When a request only says "shared agent," Agent Creator explains the choice and asks whether colleagues should collaborate in one private GitHub project or install a plugin across multiple projects. Collaborative project mode is used for multiple contributors to the same repository. Plugin distribution is used for cross-project installation, centrally managed updates, enterprise role assignment, or bundled connectors. Shared plugins follow their creator's protected stable branch and update automatically by default; pinning a version for manual updates requires an explicit choice. GitHub repositories are private by default unless the user explicitly requests public visibility.
 
 ## Security and privacy
 
