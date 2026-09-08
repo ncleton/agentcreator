@@ -21,7 +21,8 @@ Sources officielles OpenAI :
 2. Incrémenter la version sémantique de `.codex-plugin/plugin.json`.
 3. Exécuter les tests, la validation des deux skills et celle du plugin.
 4. Examiner le diff et le contrôle de confidentialité.
-5. Fusionner seulement une version validée sur la branche stable.
+5. Faire valider le commit par le workflow `Validate marketplace`.
+6. Fusionner seulement cette version validée sur la branche stable, protégée contre les pushs forcés et les suppressions.
 
 Les clients n'ont pas à manipuler Git pour recevoir une version validée. La reconnexion du compte de l'administrateur n'est nécessaire que si l'autorisation GitHub de la marketplace expire ou change de propriétaire.
 
