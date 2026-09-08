@@ -1,0 +1,24 @@
+{
+  "name": "createur-agents",
+  "version": "0.1.0+codex.20260908154035",
+  "description": "Cr\u00e9e, audite et s\u00e9curise des agents Codex partageables sans publier leurs donn\u00e9es priv\u00e9es.",
+  "author": {
+    "name": "Nicolas Cl\u00e9ton"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cr\u00e9ateur d'agents",
+    "shortDescription": "Cr\u00e9ez et fiabilisez des agents partageables.",
+    "longDescription": "Cr\u00e9e ou remet aux normes des agents personnels et collaboratifs, avec donn\u00e9es priv\u00e9es hors Git et publication prot\u00e9g\u00e9e.",
+    "developerName": "Nicolas Cl\u00e9ton",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Cr\u00e9e-moi un agent dans ce dossier.",
+      "Comment puis-je am\u00e9liorer cet agent ?",
+      "Mets cet agent aux normes pour le partager."
+    ]
+  }
+}

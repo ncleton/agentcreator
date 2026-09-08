@@ -1,0 +1,20 @@
+{
+  "name": "createur-agents",
+  "interface": {
+    "displayName": "Créateur d'agents"
+  },
+  "plugins": [
+    {
+      "name": "createur-agents",
+      "source": {
+        "source": "local",
+        "path": "./plugins/createur-agents"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
