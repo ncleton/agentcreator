@@ -36,6 +36,8 @@ def main() -> int:
         errors.append("marketplace plugin path is invalid")
 
     required = [
+        ROOT / "README.md",
+        ROOT / "docs" / "privacy.md",
         PLUGIN / "skills" / "creer-agent-partageable" / "SKILL.md",
         PLUGIN / "skills" / "auditer-agent" / "SKILL.md",
         PLUGIN / "scripts" / "agentctl.py",

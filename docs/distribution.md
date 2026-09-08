@@ -30,7 +30,7 @@ Pour une installation Codex locale issue d'une marketplace Git configurée sous 
 Installation locale depuis le dépôt public :
 
 ```bash
-codex plugin marketplace add <proprietaire>/createur-agents --ref main
+codex plugin marketplace add nicolascleton/createur-agents --ref main
 codex plugin add createur-agents@createur-agents
 ```
 
