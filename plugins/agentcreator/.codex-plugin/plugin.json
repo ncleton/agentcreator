@@ -1,6 +1,6 @@
 {
   "name": "agentcreator",
-  "version": "0.2.0+codex.20260908163851",
+  "version": "0.2.1+codex.20260908164708",
   "description": "Creates, audits, secures, and publishes shareable Codex agents without exposing private operational data.",
   "author": {
     "name": "Nicolas Cl\u00e9ton",
