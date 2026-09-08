@@ -21,6 +21,8 @@ codex plugin add createur-agents@createur-agents
 
 Démarrer ensuite une nouvelle tâche Codex afin de charger les skills.
 
+Lors du premier démarrage, Codex peut demander d'examiner et d'approuver le hook de maintenance fourni par le plugin. Cette validation unique permet la recherche quotidienne de mises à jour locales. Si le hook n'est pas approuvé, le plugin reste utilisable mais l'actualisation locale doit être demandée manuellement.
+
 ## Utiliser
 
 Dans le dossier qui doit recevoir l'agent, demander simplement :

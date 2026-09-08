@@ -27,6 +27,8 @@ Les clients n'ont pas à manipuler Git pour recevoir une version validée. La re
 
 Pour une installation Codex locale issue d'une marketplace Git configurée sous le nom `createur-agents`, le hook `SessionStart` demande silencieusement une actualisation au maximum une fois par jour. La version nouvellement chargée s'applique aux nouvelles sessions ; la session déjà ouverte termine avec la version qu'elle a chargée. Ce complément ne remplace pas la synchronisation native d'un espace de travail.
 
+Codex exige que l'utilisateur examine et approuve une première fois les hooks non gérés. Un hook modifié lors d'une future version peut demander une nouvelle validation. Sans cette confiance, l'actualisation locale reste disponible avec `codex plugin marketplace upgrade createur-agents`.
+
 Installation locale depuis le dépôt public :
 
 ```bash
