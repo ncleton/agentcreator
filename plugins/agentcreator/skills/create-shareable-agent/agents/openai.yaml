@@ -1,6 +1,6 @@
 interface:
   display_name: "Create a shareable agent"
-  short_description: "Create a safe agent from a short request"
-  default_prompt: "Use $create-shareable-agent to create an agent in this folder."
+  short_description: "Create a safe project agent or plugin"
+  default_prompt: "Use $create-shareable-agent to create and safely distribute an agent."
 policy:
   allow_implicit_invocation: true

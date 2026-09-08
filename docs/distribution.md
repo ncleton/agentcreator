@@ -2,9 +2,9 @@
 
 ## Stable channel
 
-This repository is the canonical source owned by Nicolas Cléton. The default branch is the stable channel, and `.agents/plugins/marketplace.json` references `plugins/agentcreator` in the same repository.
+This repository is the canonical source owned by Nicolas Cléton. The default branch is the stable channel, and `.agents/plugins/marketplace.json` references `plugins/agentcreator` in the same repository. Automatic updates are the default for Agent Creator and for every shared plugin it creates.
 
-In a ChatGPT workspace, an administrator imports the repository URL from **Administration > Plugins > Add > Import marketplace**. Leave the revision empty or select the stable branch rather than a fixed commit if automatic updates are desired.
+In a ChatGPT workspace, an administrator imports the repository URL from **Administration > Plugins > Add > Import marketplace**. Leave the revision empty or select the stable branch. This branch-following configuration is the default update mode.
 
 The distribution repository is public so the maintainer can remain outside the customer's GitHub team. Customers authorize the import with their own account and control which workspace roles may install the plugin. A private repository also works, but every importing account then needs read access.
 
@@ -35,6 +35,10 @@ Codex requires one-time review and approval for unmanaged hooks. A changed hook 
 codex plugin marketplace add ncleton/agentcreator --ref main
 codex plugin add agentcreator@agentcreator
 ```
+
+## Manual update mode
+
+Manual updates are an explicit opt-out from the default. Pin the workspace import to a release tag or immutable commit, omit the local once-daily update hook, and give administrators or local users the exact upgrade action. Never select this mode merely because the user did not mention updates.
 
 ## Compatibility
 

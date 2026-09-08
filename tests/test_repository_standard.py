@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -48,6 +49,31 @@ class RepositoryStandardTests(unittest.TestCase):
         for name in expected:
             metadata = (PLUGIN / "skills" / name / "agents" / "openai.yaml").read_text(encoding="utf-8")
             self.assertIn("allow_implicit_invocation: true", metadata)
+
+    def test_skill_reference_links_resolve(self) -> None:
+        for skill in (PLUGIN / "skills").glob("*/SKILL.md"):
+            text = skill.read_text(encoding="utf-8")
+            references = re.findall(r"\]\((references/[^)#]+)(?:#[^)]+)?\)", text)
+            missing = [relative for relative in references if not (skill.parent / relative).is_file()]
+            self.assertEqual(missing, [], f"broken references in {skill.relative_to(ROOT)}")
+
+    def test_shared_agent_distribution_decision_is_documented(self) -> None:
+        skill = (PLUGIN / "skills" / "create-shareable-agent" / "SKILL.md").read_text(encoding="utf-8")
+        reference = (
+            PLUGIN / "skills" / "create-shareable-agent" / "references" / "distribution-and-rights.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("distribution-and-rights.md", skill)
+        self.assertIn("private collaborative project or an installable plugin", skill)
+        self.assertIn("Set its update mode to `automatic` unless the user explicitly requests `manual`", skill)
+        for heading in [
+            "Default update policy",
+            "Rights model",
+            "Required disclosure before creating a plugin",
+            "Safe customization",
+        ]:
+            self.assertIn(heading, reference)
+        self.assertIn("Every newly created shared plugin uses `update_mode: automatic`", reference)
+        self.assertIn("Use it only after an explicit user choice", reference)
 
     def test_workflow_is_minimally_scoped_and_sha_pinned(self) -> None:
         workflow = (ROOT / ".github/workflows/validate.yml").read_text(encoding="utf-8")
