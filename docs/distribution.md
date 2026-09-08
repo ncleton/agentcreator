@@ -23,7 +23,7 @@ Official OpenAI sources:
 4. Review the complete diff and privacy scan.
 5. Open a pull request and wait for the required `validate` check.
 6. Merge only through the protected default branch.
-7. Create a signed semantic-version tag and GitHub release from the merged commit.
+7. Create an annotated semantic-version tag and GitHub release from the merged commit. Use a signed tag when signing is configured and verifiable.
 
 Customers do not need to use Git to receive a validated version. Reauthentication is needed only if the marketplace authorization expires or ownership changes.
 
